@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Shapan | Full-Stack Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="antialiased portfolio-page selection:bg-red-900 selection:text-white">
+
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-circle hidden md:block"></div>
+    <div class="grid-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] glass-nav py-5 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="bg-black/40 p-1.5 rounded-lg border border-[#c5a059]/10">
+                <img src="assets/KASHif logo-02.png" alt="KASHif Logo" class="h-8 w-auto">
+            </div>
+            <span class="font-bold text-sm tracking-widest text-[#c5a059]">EL-KASHIF</span>
+        </div>
+
+        <a href="mailto:ahmadshapan123123@gmail.com"
+            class="bg-[#f5f5f5] text-black text-[10px] font-bold uppercase tracking-widest px-6 py-3 hover:bg-[#8b0000] hover:text-white transition-all duration-300">
+            Start Project
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center relative px-6 md:px-12 pt-20">
+        <div class="max-w-[90rem] mx-auto w-full">
+            <div class="mb-8 opacity-0 animate-fade-up">
+                <span class="tag">WordPress Engineer & System Architect</span>
+            </div>
+
+            <h1 class="text-huge font-bold mb-8 text-white opacity-0 animate-fade-up" style="animation-delay: 0.1s;">
+                Technical <br>
+                <span class="gold-gradient-text italic font-light">Developer.</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-t border-white/5 pt-8 opacity-0 animate-fade-up"
+                style="animation-delay: 0.3s;">
+                <p class="text-[#888888] text-lg md:text-xl max-w-2xl leading-relaxed font-light">
+                    Engineering high-performance digital experiences through custom WordPress architectures and precise
+                    backend development.
+                </p>
+                <div class="flex gap-6 text-xl text-[#c5a059]/60">
+                    <a href="#" class="hover:text-[#8b0000] transition-colors"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-[#c5a059] transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-[#8b0000] transition-colors"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 md:px-12">
+
+        <!-- PROJECT 0: Feedback Management System -->
+        <div class="project-block mb-48 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">01 /
+                            Workflow Automation</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Feedback <span
+                                class="italic font-light text-[#c5a059]">System</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">
+                            A dedicated Web Application platform managing the technical relationship between client,
+                            management, and engineering teams through a structured software lifecycle.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Main Image -->
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/feedback/Screenshot 2026-02-13 142354.png" alt="Feedback Dashboard"
+                        class="img-reveal">
+                </div>
+
+                <!-- Secondary Images (Challenge & Solution) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/feedback/Screenshot 2026-02-13 142711.png" alt="Challenge"
+                                class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Building an RBAC system with complex
+                            observation cycles. The challenge was programming the "Feedback Credits" system based on
+                            time rather than count.</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/feedback/Screenshot 2026-02-13 142823.png" alt="Solution"
+                                class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Native WP Application engineered with advanced
+                            WP_Query and JSON-based AJAX status updates for seamless workflow transitions.</p>
+                    </div>
+                </div>
+
+                <!-- Impact & Tags Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h5 class="text-[#c5a059] font-bold mb-4 uppercase tracking-widest text-xs">Impact &
+                                Efficiency</h5>
+                            <p class="text-[#888888] text-sm leading-relaxed">
+                                Transformed project management from "feedback chaos" to an **Automated System** that
+                                reduces review time significantly and preserves the rights of all three parties (Client,
+                                Management, Executor) through comprehensive historical logs.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 content-start">
+                            <span class="tag">Native WP Development</span>
+                            <span class="tag">AJAX Workflow Engine</span>
+                            <span class="tag">Role-Based Access Control</span>
+                            <span class="tag">Real-time Status Updates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 1: Naht Al-Osoul -->
+        <div class="project-block mb-48 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">02 / Real
+                            Estate Architect</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Naht <span
+                                class="italic font-light text-[#c5a059]">Al-Osoul</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">Luxury real estate development platform
+                            seeking to shape the future of urban communities through innovative and sustainable
+                            solutions.</p>
+                    </div>
+                </div>
+
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/naht/1.png" alt="Naht UI" class="img-reveal">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/naht/2.png" alt="Map Challenge" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Developing a 100% bespoke geographic engine
+                            for property management, moving beyond generic white-label map solutions.</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/naht/3.png" alt="Map Solution" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Engineered the **"Naht Assets Engine"** plugin
+                            alongside Elementor Pro, granting full control over Map Themes and visual identity.</p>
+                    </div>
+                </div>
+
+                <!-- Tech Columns Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">Technical
+                                Core</span>
+                            <p class="text-xs text-[#888888]">Elementor Pro & "Naht Assets Engine"</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">Intelligence</span>
+                            <p class="text-xs text-[#888888]">Plugin Based Architecture (Naht Engine)</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">User
+                                Experience</span>
+                            <p class="text-xs text-[#888888]">Bespoke UI Components & High-Speed Performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: Dawah Association -->
+        <div class="project-block mb-48 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">03 /
+                            Institutional Hub</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Dawah <span
+                                class="italic font-light text-[#c5a059]">Platform</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">Digital infrastructure for spreading
+                            Islamic knowledge and protecting authentic doctrine through mastery and innovation.</p>
+                    </div>
+                </div>
+
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/Dawah-Association/1.png" alt="Dawah Hero" class="img-reveal">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/Dawah-Association/2.png" alt="HR System" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Transforming static recruitment into a
+                            built-in Mini-HR System with dynamic job fields and autonomous administration.</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/Dawah-Association/3.png" alt="YouTube API" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Developed the **"Dawah Smart Hub"** plugin to
+                            provide high-level Elementor Widgets and YouTube API synchronization.</p>
+                    </div>
+                </div>
+
+                <!-- Impact & Tags Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h5 class="text-[#c5a059] font-bold mb-4 uppercase tracking-widest text-xs">Impact &
+                                Automation</h5>
+                            <p class="text-[#888888] text-sm leading-relaxed">
+                                The system achieved 100% automation via **Custom Elementor Add-ons**, classification and
+                                media synchronization, drastically reducing administrative overhead and providing a
+                                future-proof, scalable infrastructure.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 content-start">
+                            <span class="tag">Dawah Smart Hub Plugin</span>
+                            <span class="tag">Elementor Pro</span>
+                            <span class="tag">Automated Data Tagging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 3: Bayt El-Hikma -->
+        <div class="project-block mb-48 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">04 /
+                            Knowledge Repository</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Bayt <span
+                                class="italic font-light text-[#c5a059]">El-Hikma</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">Massive archival platform for studies,
+                            books, and cultural content focusing on content density and navigation fluidity.</p>
+                    </div>
+                </div>
+
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/bayt-elhikma/1.png" alt="Hikma Hero" class="img-reveal">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/bayt-elhikma/2.png" alt="Architecture" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Constructing a sustainable post-architecture
+                            (CPTs) to handle diverse Post Types and a site-wide Dark/Light Mode system.</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/bayt-elhikma/3.png" alt="Theme Engine" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Engineered the **"Hikma Archive Manager"**
+                            plugin, providing specialized widgets linked to an advanced CPT infrastructure.</p>
+                    </div>
+                </div>
+
+                <!-- Impact & Tech Columns Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                        <div>
+                            <h5 class="text-[#c5a059] font-bold mb-4 uppercase tracking-widest text-xs">Impact &
+                                Scalability</h5>
+                            <p class="text-[#888888] text-sm leading-relaxed">
+                                Provided a scalable platform where **Custom Programmed Widgets** enabled the content
+                                team to build complex pages rapidly while maintaining design unity and robust
+                                programmatic performance.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 content-start">
+                            <span class="tag">Hikma Archive Manager</span>
+                            <span class="tag">Advanced CPTs</span>
+                            <span class="tag">Dark Mode Logic</span>
+                            <span class="tag">Elementor Widgets</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/5">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">Core
+                                Architecture</span>
+                            <p class="text-xs text-[#888888]">Advanced Custom Post Types & "Hikma Manager"</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">UI/UX
+                                Engine</span>
+                            <p class="text-xs text-[#888888]">Custom Elementor Extension & Mode Control</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase text-[#c5a059] block mb-2 tracking-widest">Design
+                                System</span>
+                            <p class="text-xs text-[#888888]">Tailored Widget Layouts & Typography Focus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 4: Vision Doors -->
+        <div class="project-block mb-32 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">05 /
+                            Configurator</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Vision <span
+                                class="italic font-light text-[#c5a059]">Doors</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">Interactive showroom for real-time
+                            visualization of premium door collections through sophisticated customization logic.</p>
+                    </div>
+                </div>
+
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/Vision/1.png" alt="Vision Hero" class="img-reveal">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/Vision/2.png" alt="Simulator Logic" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Developing product output logic based on
+                            complex dual-taxonomy intersections (Model and Color).</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/Vision/3.png" alt="Dynamic Engine" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Engineered the **"Vision Product
+                            Configurator"** plugin for reactive data-swapping visual updates.</p>
+                    </div>
+                </div>
+
+                <!-- Business Impact Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h5 class="text-[#c5a059] font-bold mb-4 uppercase tracking-widest text-xs">Business Impact
+                            </h5>
+                            <p class="text-[#888888] text-sm leading-relaxed">
+                                Transformed a static catalog into a high-conversion sales tool, allowing customers to
+                                visualize final products with pinpoint accuracy and significantly streamlining the sales
+                                process.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 content-start">
+                            <span class="tag">Custom Logic Matrix</span>
+                            <span class="tag">Dual-Taxonomy Architecture</span>
+                            <span class="tag">Elementor Custom Extension</span>
+                            <span class="tag">Reactive UI Components</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 5: Eyon Elmagles -->
+        <div class="project-block mb-32 group">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 items-end">
+                    <div class="md:col-span-8">
+                        <span class="text-[#8b0000] font-bold text-xs tracking-[0.2em] uppercase mb-4 block">06 /
+                            Multimedia Hub</span>
+                        <h2 class="text-4xl md:text-7xl font-bold text-white tracking-tight">Eyon <span
+                                class="italic font-light text-[#c5a059]">Elmagles</span></h2>
+                    </div>
+                    <div class="md:col-span-4 border-l border-[#c5a059]/20 pl-6">
+                        <p class="text-[#888888] text-sm leading-relaxed italic">Comprehensive modernization of a
+                            decade-old news portal into a high-performance multimedia platform for modern digital
+                            journalism.</p>
+                    </div>
+                </div>
+
+                <div class="img-wrapper w-full aspect-[21/9] mb-8">
+                    <img src="assets/Portfolio/eyon/1.png" alt="Eyon Hub" class="img-reveal">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#8b0000]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/eyon/2.png" alt="Legacy Challenge" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#c5a059] text-lg font-bold mb-3 uppercase tracking-tighter">The Challenge</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Migrating ten years of journalistic data while
+                            building a unified display system for Videos, Podcasts, and Reels without sacrificing
+                            performance.</p>
+                    </div>
+                    <div
+                        class="bg-white/[0.02] p-8 border border-white/5 hover:border-[#c5a059]/40 transition-colors duration-500">
+                        <div class="img-wrapper w-full aspect-video mb-6">
+                            <img src="assets/Portfolio/eyon/3.png" alt="Multimedia Solution" class="img-reveal">
+                        </div>
+                        <h4 class="text-[#8b0000] text-lg font-bold mb-3 uppercase tracking-tighter">The Solution</h4>
+                        <p class="text-[#888888] text-sm leading-relaxed">Developed a **"Multimedia Core Sync"** plugin
+                            with Custom Post Types and smart iFrame engines for seamless multi-platform content
+                            delivery.</p>
+                    </div>
+                </div>
+
+                <!-- Impact & Tech Area -->
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h5 class="text-[#c5a059] font-bold mb-4 uppercase tracking-widest text-xs">Platform
+                                Resurgence
+                            </h5>
+                            <p class="text-[#888888] text-sm leading-relaxed">
+                                Revitalized a prestigious media hub by merging massive archival depth with a agile
+                                multimedia framework, providing editors with sophisticated tools for modern content
+                                distribution.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 content-start">
+                            <span class="tag">News Portal Architecture</span>
+                            <span class="tag">Legacy Data Migration</span>
+                            <span class="tag">Multimedia Hub Engine</span>
+                            <span class="tag">Custom Widget Sync</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-32 px-6 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="tag mb-10">Availability: 2026</span>
+            <h2 class="text-6xl md:text-9xl font-black text-white tracking-tighter mb-12 italic">Connect.</h2>
+            <a href="mailto:ahmadshapan123123@gmail.com"
+                class="text-2xl md:text-4xl font-bold text-[#c5a059] hover:text-[#8b0000] transition-all border-b border-[#c5a059]/30 pb-2">
+                ahmadshapan123123@gmail.com
+            </a>
+
+            <div class="mt-20 flex justify-center gap-12 text-[#888888] text-2xl">
+                <a href="#" class="hover:text-[#c5a059] transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-[#8b0000] transition-colors"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+
+            <p class="mt-20 text-[10px] font-bold text-[#444] uppercase tracking-[0.5em]">
+                © 2026 EL-KASHIF • Crafted in Black & Gold
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorCircle = document.querySelector('.cursor-circle');
+
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursorDot, { x: e.clientX - 3, y: e.clientY - 3, duration: 0.1 });
+            gsap.to(cursorCircle, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.5, ease: "power2.out" });
+        });
+
+        document.querySelectorAll('a, button, .img-wrapper').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(cursorCircle, { scale: 1.5, backgroundColor: 'rgba(139, 0, 0, 0.1)', duration: 0.3 });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(cursorCircle, { scale: 1, backgroundColor: 'transparent', duration: 0.3 });
+            });
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".animate-fade-up", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        document.querySelectorAll('.project-block').forEach((block) => {
+            gsap.from(block.querySelector('h2'), {
+                scrollTrigger: { trigger: block, start: "top 75%" },
+                y: 30, opacity: 0, duration: 1, ease: "power3.out"
+            });
+            gsap.from(block.querySelector('.img-wrapper'), {
+                scrollTrigger: { trigger: block, start: "top 60%" },
+                scale: 0.98, opacity: 0, duration: 1.5, ease: "power3.out"
+            });
+        });
+
+        // Simple Lightbox Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.createElement('div');
+            lightbox.id = 'portfolio-lightbox';
+            lightbox.className = 'fixed inset-0 z-[9999] bg-black/95 hidden flex items-center justify-center p-4 cursor-zoom-out';
+            lightbox.innerHTML = `
+                <img src="" alt="Lightbox Image" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl transition-transform duration-300 scale-95 opacity-0 object-contain">
+                <button class="absolute top-5 right-5 text-white text-4xl hover:text-[#c5a059] transition-colors">&times;</button>
+            `;
+            document.body.appendChild(lightbox);
+
+            const lightboxImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('button');
+
+            const openLightbox = (src) => {
+                lightboxImg.src = src;
+                lightbox.classList.remove('hidden');
+                setTimeout(() => {
+                    lightboxImg.classList.remove('scale-95', 'opacity-0');
+                    lightboxImg.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            };
+
+            const closeLightbox = () => {
+                lightboxImg.classList.remove('scale-100', 'opacity-100');
+                lightboxImg.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    lightboxImg.src = '';
+                }, 300);
+            };
+
+            document.querySelectorAll('.img-reveal').forEach(img => {
+                img.classList.add('cursor-zoom-in');
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openLightbox(img.src);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        });
+    </script>
+</body>
+
+</html>

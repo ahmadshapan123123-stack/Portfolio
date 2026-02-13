@@ -1,0 +1,118 @@
+:root {
+    --p-bg-body: #050505;
+    --p-bg-card: #0a0a0a;
+    --p-accent-gold: #c5a059;
+    --p-accent-red: #8b0000;
+    --p-text-white: #f5f5f5;
+    --p-text-muted: #888888;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--p-bg-body);
+    color: var(--p-text-white);
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--p-bg-body);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--p-accent-red);
+}
+
+.text-huge {
+    font-size: clamp(3.5rem, 9vw, 10rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 2px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--p-accent-gold);
+}
+
+.glass-nav {
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.img-wrapper {
+    overflow: hidden;
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.img-reveal {
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1), filter 0.8s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(110%) brightness(0.8);
+}
+
+.project-block:hover .img-reveal {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(100%) brightness(1);
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--p-accent-gold);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cursor-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--p-accent-red);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.grid-bg {
+    background-image: linear-gradient(rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.gold-gradient-text {
+    background: linear-gradient(to right, #c5a059, #fff, #c5a059);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.red-highlight {
+    color: var(--p-accent-red);
+}
