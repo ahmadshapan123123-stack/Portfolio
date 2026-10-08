@@ -7,12 +7,171 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style-v3.css">
+<style>
+  /* v3-fix: layout overlap guards + category headers (index-v3.html only) */
+  .projects .project { position: relative; z-index: 1; }
+  .projects .project-grid { position: relative; z-index: 1; }
+  .projects .frame, .projects .card, .projects .mini-card,
+  .projects .panel, .projects .p-copy, .projects .p-visual { position: relative; z-index: 1; }
+  .projects .frame::before { z-index: 0; }
+  .projects .frame-inner { position: relative; z-index: 1; }
+  .projects .ghost { pointer-events: none; z-index: 0; }
+  .projects .p-copy > *, .projects .p-visual > * { position: relative; z-index: 1; }
+  .projects .panel-grid, .projects .gallery-3, .projects .duo-cards { position: relative; z-index: 1; }
+  .cat-header { position: relative; z-index: 1; text-align: center; padding: 3.5rem 1.5rem 1rem; margin: 1rem auto 3rem; max-width: 62rem; }
+  .cat-header .cat-label { display: inline-block; color: var(--gold); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; padding: 0.55rem 1.1rem; border: 1px solid rgba(233,193,118,0.25); border-radius: 999px; background: rgba(27,26,25,0.72); }
+  .cat-header .cat-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; color: #f4f1ec; line-height: 1.05; margin: 0 0 0.75rem; }
+  .cat-header .cat-sub { font-size: 1.05rem; color: var(--ink-muted); font-weight: 400; margin: 0; }
+  .cat-header::after { content: ""; display: block; width: 120px; height: 2px; margin: 1.75rem auto 0; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .cat-sep { height: 1px; max-width: 62rem; margin: 0 auto; background: linear-gradient(to right, transparent, rgba(233,193,118,0.22), transparent); }
+  /* v3-fix2: stats margin */
+  .stats { margin-top: 6rem !important; }
+  /* v3-fix2: image overflow guards for .p-visual */
+  .projects .p-visual { overflow: hidden; max-width: 100%; }
+  .projects .frame { overflow: hidden; max-width: 100%; }
+  .projects .frame-inner { overflow: hidden !important; max-width: 100%; }
+  .projects .frame-inner img, .projects .thumb img { width: 100%; height: 100%; max-width: 100%; object-fit: cover; }
+  .projects .thumb { overflow: hidden; max-width: 100%; }
+  /* v3-fix2: clickable images affordance */
+  .projects .frame-inner img, .projects .thumb img { cursor: zoom-in; }
+  /* v3-fix2: lightbox overlay (dark + gold identity) */
+  .lightbox { position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center; padding: 2rem; background: rgba(6,6,6,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; visibility: hidden; pointer-events: none; }
+  .lightbox.open { pointer-events: auto; visibility: visible; }
+  .lightbox img { max-width: min(90vw, 1100px); max-height: 88vh; width: auto; height: auto; object-fit: contain; border-radius: 1rem; border: 1px solid rgba(233,193,118,0.35); box-shadow: 0 30px 90px -20px rgba(0,0,0,0.9), 0 0 40px rgba(233,193,118,0.12); background: #0c0c0c; }
+  .lightbox-close { position: absolute; top: 1.25rem; right: 1.25rem; width: 3rem; height: 3rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid rgba(233,193,118,0.4); background: rgba(27,26,25,0.9); color: var(--gold); font-size: 1.5rem; line-height: 1; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease; }
+  .lightbox-close:hover { background: rgba(233,193,118,0.2); transform: scale(1.06); }
+  /* v3-fix3: end-to-end badge + project links (WordPress projects) */
+  .e2e-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.9rem; padding: 0.55rem 1rem; border: 1px solid rgba(233,193,118,0.35); border-radius: 999px; background: rgba(233,193,118,0.08); color: var(--gold-pale); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.5; }
+  .e2e-badge .material-symbols-outlined { font-size: 1rem; color: var(--gold); flex: none; }
+  .p-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; color: var(--gold); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(233,193,118,0.4); padding-bottom: 0.3rem; transition: color 0.3s ease, border-color 0.3s ease; }
+  .p-link:hover { color: #ffe9bd; border-color: var(--gold); }
+
+/* Fix: images fill their frames */
+.frame-inner img,
+.thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.frame-inner {
+    overflow: hidden !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.frame {
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.thumb {
+    overflow: hidden !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Force images to fill their frames completely */
+.frame,
+.frame-tall,
+.frame.side-tall,
+.frame.mini,
+.frame.mini2,
+.frame.lead,
+.thumb {
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.frame-inner {
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.frame-inner img,
+.thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Ensure frames have proper dimensions */
+.frame-tall {
+    min-height: 400px !important;
+}
+
+.frame.side-tall {
+    min-height: 350px !important;
+}
+
+.frame.mini {
+    min-height: 200px !important;
+}
+
+.frame.mini2 {
+    min-height: 180px !important;
+}
+
+.frame.lead {
+    min-height: 300px !important;
+}
+
+.thumb {
+    min-height: 120px !important;
+}
+  /* v3-fix6: tag alignment + spacing, stats alignment (index-v3.html only) */
+  .tags { display: flex !important; flex-wrap: wrap !important; gap: 0.75rem !important; margin-bottom: 2rem !important; align-items: center !important; }
+  .tag { display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 0.55rem 1rem !important; line-height: 1.4 !important; }
+  .p-link { margin-top: 1.25rem !important; }
+  .stats { display: flex !important; gap: 1.5rem !important; margin-top: 6rem !important; align-items: stretch !important; }
+  .stat { flex: 1 !important; text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
+  /* Fix: Dawah Platform gallery height */
+  .gallery-3 .frame { min-height: 250px !important; }
+  .gallery-3 .frame-inner { min-height: 250px !important; }
+  /* v3-orb-fix2: mouse-following light circle (matches original decorative-light design) */
+  .decorative-light {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(233, 193, 118, 0.15) 0%, rgba(233, 193, 118, 0.05) 30%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(150px);
+      pointer-events: none;
+      z-index: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+  }
+</style>
 </head>
 <body>
 <div class="canvas" aria-hidden="true"></div>
 <div class="grid-veil" aria-hidden="true"></div>
-<div class="orb orb-a" aria-hidden="true"></div>
-<div class="orb orb-b" aria-hidden="true"></div>
+<div class="decorative-light" aria-hidden="true"></div>
 
 <!-- Header -->
 <header class="site-head" id="siteHead">
@@ -47,14 +206,14 @@
   <section class="hero" id="overview" aria-label="Overview">
     <div class="hero-badge" data-hero="badge">
       <span class="dot" aria-hidden="true"></span>
-      <span>WordPress Engineer &amp; System Architect</span>
+      <span>WordPress &amp; Vibe Coder</span>
     </div>
     <h2 class="hero-title" aria-label="TECHNICAL DEVELOPER.">
       <span class="mask-line"><span class="mask-inner" data-hero="line">TECHNICAL</span></span>
       <span class="mask-line"><span class="mask-inner accent" data-hero="line">DEVELOPER.</span></span>
     </h2>
     <div class="hero-lede" data-hero="lede">
-      <p>Engineering high-performance digital experiences through custom architectural frameworks and bespoke plugin ecosystems. I bridge the gap between editorial vision and robust technical execution.</p>
+      <p>I build high-performance sites with custom frameworks and plugin ecosystems — vision to execution.</p>
     </div>
   </section>
 
@@ -63,87 +222,87 @@
   <!-- Projects -->
   <section class="projects" id="projects" aria-label="Projects">
 
-    <!-- Category: Custom Code -->
-    <div class="text-center space-y-4 mb-16">
-      <span class="text-primary font-bold text-xs tracking-[0.3em] uppercase">Custom Code</span>
-      <h3 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">Custom Code Projects</h3>
-      <p class="text-on-surface-variant text-lg">Applications built from scratch with React &amp; TypeScript</p>
+    <!-- Category: WordPress -->
+    <div class="cat-header">
+      <span class="cat-label">WordPress</span>
+      <h3 class="cat-title">WordPress Projects</h3>
+      <p class="cat-sub">Custom themes, plugins, and Elementor solutions</p>
     </div>
 
-    <!-- Project 01 -->
+    <!-- Project 01: GAMA United -->
     <article class="project" data-project>
       <span class="ghost" data-ghost aria-hidden="true">01</span>
       <div class="project-grid">
         <div class="p-visual" data-visual>
-          <div class="frame frame-tall">
-            <div class="frame-inner">
-              <img data-alt="Apartment planning interface" src="assets/Portfolio/shaqti-plan/1.png" data-parallax/>
-              <div class="frame-caption">
-                <h3 class="cap-title">Interactive Drawing Canvas</h3>
-                <p>Real-time apartment planning with RTL support for Arabic users</p>
+          <div class="duo">
+            <div class="frame side-tall">
+              <div class="frame-inner">
+                <img data-alt="GAMA United chemical manufacturer website hero" src="assets/Portfolio/gama/screenshot.png" data-parallax/>
+              </div>
+            </div>
+            <div class="stack">
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="GAMA services page" src="assets/Portfolio/gama/services.png" data-parallax/>
+                </div>
+              </div>
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="GAMA products page" src="assets/Portfolio/gama/products.png" data-parallax/>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="p-copy" data-copy>
           <span class="kicker">Project 01</span>
-          <h3 class="p-title">Shaqti Plan</h3>
-          <p class="p-sub">Apartment Planning Tool</p>
+          <h3 class="p-title">GAMA United</h3>
+          <p class="p-sub">Chemical Manufacturer — WordPress Website</p>
+          <span class="e2e-badge"><span class="material-symbols-outlined" data-icon="all_inclusive">all_inclusive</span>Executed end-to-end: UX → UI → Frontend → Backend</span>
           <div class="stack-cards">
             <div class="card" data-card>
               <h4>Background</h4>
-              <p>The Arabic digital landscape was missing intuitive apartment planning tools that respected RTL typography and cultural design patterns. Users struggled with Western-centric solutions that felt alien to their workflow and spatial understanding.</p>
+              <p>Bilingual (AR/EN) WordPress site for a Saudi chemical manufacturer — custom product catalogs, service pages, WhatsApp integration.</p>
             </div>
             <div class="card" data-card>
               <h4>Implementation</h4>
-              <p>Architected a comprehensive React application with TypeScript that bridges cultural design with modern functionality. Created an interactive canvas system that understands Arabic spatial planning, complete with gesture controls and real-time measurement tools.</p>
+              <p>Custom gama-theme with CPTs (gama_product, gama_service), dual-language system, GSAP galleries, relations engine, WhatsApp CTA.</p>
             </div>
           </div>
-          <div class="stats" data-stats>
-            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">RTL Support</span></div>
-            <div class="stat"><span class="num" data-count="95" data-suffix="%">95%</span><span class="lbl">User Experience</span></div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">WordPress</span>
+            <span class="tag">Custom Theme</span>
+            <span class="tag">GSAP</span>
+            <span class="tag">CPT</span>
+            <span class="tag">Bilingual</span>
           </div>
-          <div class="tags" data-tags>
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Interactive Canvas</span>
-            <span class="tag">RTL Support</span>
-            <span class="tag">Vercel Deploy</span>
-          </div>
+          <a class="p-link" href="https://gamahygiene.com/" target="_blank" rel="noopener">Live Site — gamahygiene.com</a>
         </div>
       </div>
     </article>
 
     <div class="divider soft narrow" aria-hidden="true"></div>
 
-    <!-- Category: WordPress -->
-    <div class="text-center space-y-4 mb-16">
-      <span class="text-primary font-bold text-xs tracking-[0.3em] uppercase">WordPress</span>
-      <h3 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">WordPress Projects</h3>
-      <p class="text-on-surface-variant text-lg">Custom themes, plugins, and Elementor solutions</p>
-    </div>
-
-    <!-- Project 02 -->
+    <!-- Project 02: Switch Media -->
     <article class="project" data-project>
       <span class="ghost right" data-ghost aria-hidden="true">02</span>
       <div class="project-grid">
         <div class="p-visual" data-visual>
           <div class="duo">
-            <div class="frame frame-tall">
+            <div class="frame side-tall">
               <div class="frame-inner">
-                <img data-alt="Project management dashboard" src="assets/Portfolio/project manger/1.png" data-parallax/>
-                <div class="frame-caption top">
-                  <h3 class="cap-title">Admin Dashboard</h3>
-                  <p>Real-time project tracking</p>
-                </div>
+                <img data-alt="Switch Media digital marketing agency website hero" src="assets/Portfolio/switch/screenshot.png" data-parallax/>
               </div>
             </div>
-            <div class="frame frame-tall">
-              <div class="frame-inner">
-                <img data-alt="Team collaboration interface" src="assets/Portfolio/project manger/2.png" data-parallax/>
-                <div class="frame-caption top">
-                  <h3 class="cap-title">Team Portal</h3>
-                  <p>Multi-team access control</p>
+            <div class="stack">
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="Switch Media services page" src="assets/Portfolio/switch/services.png" data-parallax/>
+                </div>
+              </div>
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="Switch Media contact page" src="assets/Portfolio/switch/contact.png" data-parallax/>
                 </div>
               </div>
             </div>
@@ -151,36 +310,38 @@
         </div>
         <div class="p-copy" data-copy>
           <span class="kicker">Project 02</span>
-          <h3 class="p-title">Project Manager</h3>
-          <p class="p-sub">Enterprise Workflow System</p>
+          <h3 class="p-title">Switch Media</h3>
+          <p class="p-sub">Digital Marketing Agency — Frontend (Vercel)</p>
+          <span class="e2e-badge"><span class="material-symbols-outlined" data-icon="all_inclusive">all_inclusive</span>Frontend deployed on Vercel — Backend via WordPress</span>
           <div class="stack-cards">
             <div class="card" data-card>
               <h4>Background</h4>
-              <p>The programming industry was drowning in disconnected project management tools that failed to understand the collaborative nature of modern development teams. Siloed workflows and rigid permission systems created bottlenecks that slowed innovation and team productivity.</p>
+              <p>WordPress site for a Saudi marketing agency — services, portfolio, blog, careers, contact via custom Elementor plugin.</p>
             </div>
             <div class="card" data-card>
               <h4>Implementation</h4>
-              <p>Crafted a sophisticated WordPress-native ecosystem that reimagines project management for programming companies. Engineered an intelligent RBAC framework with real-time AJAX workflows that adapt to team dynamics and project complexity.</p>
+              <p>Zidane Core: 35+ Elementor widgets, 3 CPTs (services, portfolio, clients), 2 taxonomies, REST API form with honeypot, shortcodes.</p>
             </div>
           </div>
           <div class="stats" data-stats>
-            <div class="stat"><span class="num" data-count="95" data-suffix="%">95%</span><span class="lbl">Automation</span></div>
-            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">Team Support</span></div>
+            <div class="stat"><span class="num" data-count="35" data-suffix="+">35+</span><span class="lbl">Widgets</span></div>
+            <div class="stat"><span class="num" data-count="3">3</span><span class="lbl">CPTs</span></div>
           </div>
-          <div class="tags" data-tags>
-            <span class="tag">WordPress Native</span>
-            <span class="tag">RBAC System</span>
-            <span class="tag">AJAX Engine</span>
-            <span class="tag">Workflow Management</span>
-            <span class="tag">Multi-team</span>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">React</span>
+            <span class="tag">GSAP</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">Responsive</span>
+            <span class="tag">Frontend</span>
           </div>
+          <a class="p-link" href="https://switch-static.vercel.app/" target="_blank" rel="noopener">Live Site — switch-static.vercel.app</a>
         </div>
       </div>
     </article>
 
     <div class="divider soft narrow" aria-hidden="true"></div>
 
-    <!-- Project 03 -->
+    <!-- Project 03: Feedback System -->
     <article class="project" data-project>
       <span class="ghost" data-ghost aria-hidden="true">03</span>
       <div class="project-grid tall flip">
@@ -210,18 +371,14 @@
           <div class="stack-cards">
             <div class="card" data-card>
               <h4>Challenge</h4>
-              <p>Developing a complex RBAC (Role-Based Access Control) and Credits system within a unified administrative environment.</p>
+              <p>Needed RBAC + Credits system in one admin environment.</p>
             </div>
             <div class="card" data-card>
               <h4>Solution</h4>
-              <p>Engineered a Native WP App utilizing an AJAX Workflow Engine for real-time status updates and credit deduction logic.</p>
+              <p>Native WP app with AJAX Workflow Engine — real-time status updates and credit deduction.</p>
             </div>
           </div>
-          <div class="stats" data-stats>
-            <div class="stat"><span class="num" data-count="85" data-suffix="%">85%</span><span class="lbl">Review Reduction</span></div>
-            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">Automation</span></div>
-          </div>
-          <div class="tags" data-tags>
+          <div class="tags" data-tags style="margin-top: 2rem;">
             <span class="tag">Native WP Development</span>
             <span class="tag">AJAX Workflow Engine</span>
             <span class="tag">RBAC</span>
@@ -232,7 +389,7 @@
 
     <div class="divider soft narrow" aria-hidden="true"></div>
 
-    <!-- Project 04 -->
+    <!-- Project 04: Naht Al-Osoul -->
     <article class="project" data-project>
       <span class="ghost right" data-ghost aria-hidden="true">04</span>
       <div class="project-grid">
@@ -260,24 +417,25 @@
         <div class="p-copy" data-copy>
           <span class="kicker">Project 04</span>
           <h3 class="p-title">Naht Al-Osoul</h3>
-          <p class="p-sub">Real Estate Architect</p>
+          <p class="p-sub">Real Estate Development Platform</p>
           <div class="stack-cards">
             <div class="card lead" data-card>
-              <p>Challenge: Building a bespoke geographic engine for high-end real estate filtering. Solution: Created the <strong>Naht Assets Engine</strong> plugin.</p>
+              <p>Built the Naht Assets Engine plugin for high-end real estate geo-filtering.</p>
             </div>
           </div>
           <div class="spec" data-stats>
-            <div><p>Tech Core</p><p>Custom Engine Architecture</p></div>
-            <div><p>Intelligence</p><p>Geo-filtering Algorithm</p></div>
-            <div><p>UX</p><p>Reactive Interface</p></div>
+            <div><p>Projects</p><p>30+</p></div>
+            <div><p>Units</p><p>365+</p></div>
+            <div><p>Area</p><p>40K+ m²</p></div>
           </div>
+          <a class="p-link" href="https://naht-re.sa" target="_blank" rel="noopener">Live Site — naht-re.sa</a>
         </div>
       </div>
     </article>
 
     <div class="divider" aria-hidden="true"></div>
 
-    <!-- Project 05 (feature panel) -->
+    <!-- Project 05: Dawah Platform (feature panel) -->
     <article class="project" data-project>
       <div class="panel" data-visual>
         <span class="ghost faint" data-ghost aria-hidden="true">05</span>
@@ -288,10 +446,10 @@
             <p class="p-sub">Institutional Hub</p>
             <div class="stack-cards">
               <div class="card lead" data-card>
-                <p>Challenge: A complex Mini-HR system required within an institutional framework. Solution: Developed the <strong>Dawah Smart Hub</strong> plugin, achieving 100% automation of internal workflows.</p>
+                <p>Built the Dawah Smart Hub plugin — Mini-HR system with 100% workflow automation.</p>
               </div>
             </div>
-            <div class="tags" data-tags>
+            <div class="tags" data-tags style="margin-top: 2rem;">
               <span class="tag">Dawah Smart Hub Plugin</span>
               <span class="tag">Elementor Pro</span>
               <span class="tag">Automated Tagging</span>
@@ -303,7 +461,7 @@
               <span class="material-symbols-outlined" data-icon="verified">verified</span>
             </div>
             <div class="meter-bar" aria-hidden="true"><div class="meter-fill" data-meter></div></div>
-            <p>Reduced operational overhead by significantly streamlining member onboarding and tracking.</p>
+            <p>Streamlined member onboarding and tracking.</p>
           </div>
         </div>
         <div class="gallery-3" data-tags>
@@ -332,21 +490,16 @@
     <article class="project" data-project>
       <div class="duo-cards">
         <div class="mini-card" data-copy>
-          <span class="ghost small" data-ghost aria-hidden="true">05</span>
+          <span class="ghost small" data-ghost aria-hidden="true">06</span>
           <span class="kicker">Project 06</span>
           <h3 class="p-title">Bayt El-Hikma</h3>
           <p class="p-sub">Knowledge Repository</p>
-          <p class="lede">Challenge: Scaling post-architecture CPTs with specialized Dark Mode logic. Solution: Engineered the <strong>Hikma Archive Manager</strong> plugin for specialized knowledge repository management.</p>
+          <p class="lede">Built the Hikma Archive Manager plugin — scalable CPTs with Dark Mode for knowledge management.</p>
           <div class="thumbs c2" data-visual>
             <div class="thumb"><img src="assets/Portfolio/bayt-elhikma/1.png" alt="Hikma Archive Interface"/></div>
             <div class="thumb"><img src="assets/Portfolio/bayt-elhikma/2.png" alt="Dark Mode System"/></div>
           </div>
-          <div class="spec" data-stats>
-            <div><p>Tech Core</p><p>Advanced CPTs</p></div>
-            <div><p>Intelligence</p><p>Dark Mode Logic</p></div>
-            <div><p>UX</p><p>Custom Widgets</p></div>
-          </div>
-          <div class="tags" data-tags>
+          <div class="tags" data-tags style="margin-top: 2rem;">
             <span class="tag">Advanced CPTs</span>
             <span class="tag">Dark Mode Logic</span>
             <span class="tag">Widgets</span>
@@ -357,22 +510,277 @@
           <span class="kicker">Project 07</span>
           <h3 class="p-title">Vision Doors</h3>
           <p class="p-sub">Product Configurator</p>
-          <p class="lede">Challenge: Complex dual-taxonomy logic for product configuration. Solution: Developed <strong>Vision Product Configurator</strong>, a high-conversion tool integrating reactive UI components.</p>
+          <p class="lede">Built Vision Product Configurator — dual-taxonomy logic with reactive UI for high conversion.</p>
           <div class="thumbs c3" data-visual>
             <div class="thumb"><img src="assets/Portfolio/Vision/1.png" alt="Product Interface"/></div>
             <div class="thumb"><img src="assets/Portfolio/Vision/2.png" alt="Configuration Panel"/></div>
             <div class="thumb"><img src="assets/Portfolio/Vision/3.png" alt="Product Preview"/></div>
           </div>
-          <div class="spec" data-stats>
-            <div><p>Tech Core</p><p>Logic Matrix</p></div>
-            <div><p>Intelligence</p><p>Dual-Taxonomy</p></div>
-            <div><p>UX</p><p>Reactive UI</p></div>
-          </div>
-          <div class="tags" data-tags>
+          <div class="tags" data-tags style="margin-top: 2rem;">
             <span class="tag">Logic Matrix</span>
             <span class="tag">Dual-Taxonomy</span>
             <span class="tag">Reactive UI</span>
           </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Category: Vibe Coder -->
+    <div class="cat-header">
+      <span class="cat-label">Vibe Coder</span>
+      <h3 class="cat-title">Vibe Coder Projects</h3>
+      <p class="cat-sub">Personal projects built to solve real-life problems — not commercial, but powerful</p>
+    </div>
+
+    <!-- Project 08: Kaf -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">08</span>
+      <div class="project-grid tall flip">
+        <div class="p-visual" data-visual>
+          <div class="trio">
+            <div class="frame lead">
+              <div class="frame-inner">
+                <img data-alt="Kaf hero section interface" src="assets/Portfolio/kaf/hero.png" data-parallax/>
+                <div class="frame-caption">
+                  <h3 class="cap-title">Saudi AI Campaign Studio</h3>
+                  <p>Generate ad campaigns with Saudi dialect support</p>
+                </div>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="Kaf interactive tools demo" src="assets/Portfolio/kaf/demo.png" data-parallax/>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="Kaf platform features overview" src="assets/Portfolio/kaf/features.png" data-parallax/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 08</span>
+          <h3 class="p-title">Kaf</h3>
+          <p class="p-sub">AI Content Generation Platform</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>Kaf is an AI-powered content generation platform built specifically for the Saudi and Gulf market. It enables content creators, marketers, and businesses to generate advertising campaigns and creative content with specialized Saudi Arabic dialect support.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>Built a full-stack React platform with a 5-step campaign generator covering Reels, X Threads, TikTok, and Google Ads, plus "Kaf Clear" — a Saudi dialect checker with Najdi, Hijazi, and Eastern options. Includes brand identity management, an interactive teleprompter, Word document export, multi-tenant data isolation, and Gemini API integration for unlimited generation.</p>
+            </div>
+          </div>
+          <div class="stats" data-stats>
+            <div class="stat"><span class="num" data-count="5">5</span><span class="lbl">Campaign Steps</span></div>
+            <div class="stat"><span class="num" data-count="3">3</span><span class="lbl">Dialect Options</span></div>
+            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">Data Isolation</span></div>
+          </div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">React</span>
+            <span class="tag">AI</span>
+            <span class="tag">Full-Stack</span>
+            <span class="tag">RTL</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag">Saudi Market</span>
+          </div>
+          <a class="p-link" href="https://kaf-content.ai.studio/" target="_blank" rel="noopener">Live Site — kaf-content.ai.studio</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 09: ATHER -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">09</span>
+      <div class="project-grid tall flip">
+        <div class="p-visual" data-visual>
+          <div class="trio">
+            <div class="frame lead">
+              <div class="frame-inner">
+                <img data-alt="ATHER audiobook platform hero" src="assets/Portfolio/athir/hero.jpeg" data-parallax/>
+                <div class="frame-caption">
+                  <h3 class="cap-title">Immersive Audio Player</h3>
+                  <p>Custom audiobook player with chapter navigation</p>
+                </div>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="ATHER favorites library interface" src="assets/Portfolio/athir/favorites.png" data-parallax/>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="ATHER audiobook player interface" src="assets/Portfolio/athir/player.png" data-parallax/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 09</span>
+          <h3 class="p-title">ATHER</h3>
+          <p class="p-sub">Arabic Audiobook Platform</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>Built a complete Arabic audiobook platform that transforms the reading experience into an immersive audio journey. Designed for book lovers who want to listen to their favorite stories with professional narration, chapter navigation, and playback controls.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>Developed a full-stack audiobook platform with React, featuring a custom audio player with chapter-based navigation, playback speed control, bookmarking, progress tracking, favorites, statistics, and a dark mode UI. Built with a focus on accessibility and smooth user experience across devices.</p>
+            </div>
+          </div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">React</span>
+            <span class="tag">Audio</span>
+            <span class="tag">Full-Stack</span>
+            <span class="tag">RTL</span>
+            <span class="tag">UX</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 10: Shaqti Plan -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">10</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="frame frame-tall">
+            <div class="frame-inner">
+              <img data-alt="Apartment planning interface" src="assets/Portfolio/shaqti-plan/1.png" data-parallax/>
+              <div class="frame-caption">
+                <h3 class="cap-title">Interactive Drawing Canvas</h3>
+                <p>Real-time planning with RTL support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 10</span>
+          <h3 class="p-title">Shaqti Plan</h3>
+          <p class="p-sub">Apartment Planning Tool</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>Personal project built to solve a real-life problem — planning apartment layouts with accurate measurements and full RTL support for everyday use.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>React + TypeScript personal tool with interactive canvas, gesture controls, and real-time measurement — built for real-life use, not commercial purposes.</p>
+            </div>
+          </div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Interactive Canvas</span>
+            <span class="tag">RTL Support</span>
+            <span class="tag">Vercel Deploy</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 11: Project Manager -->
+    <article class="project" data-project>
+      <span class="ghost right" data-ghost aria-hidden="true">11</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="duo">
+            <div class="frame frame-tall">
+              <div class="frame-inner">
+                <img data-alt="Project management dashboard" src="assets/Portfolio/project manger/1.png" data-parallax/>
+                <div class="frame-caption top">
+                  <h3 class="cap-title">Admin Dashboard</h3>
+                  <p>Real-time project tracking</p>
+                </div>
+              </div>
+            </div>
+            <div class="frame frame-tall">
+              <div class="frame-inner">
+                <img data-alt="Team collaboration interface" src="assets/Portfolio/project manger/2.png" data-parallax/>
+                <div class="frame-caption top">
+                  <h3 class="cap-title">Team Portal</h3>
+                  <p>Multi-team access control</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 11</span>
+          <h3 class="p-title">Project Manager</h3>
+          <p class="p-sub">Enterprise Workflow System</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>Personal project built to solve a real-life organization problem — managing tasks across small teams without siloed workflows or rigid tools.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>No-code style system built with WordPress-native RBAC and real-time AJAX workflows for flexible multi-team collaboration — personal use, not commercial.</p>
+            </div>
+          </div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">WordPress Native</span>
+            <span class="tag">RBAC System</span>
+            <span class="tag">AJAX Engine</span>
+            <span class="tag">Workflow Management</span>
+            <span class="tag">Multi-team</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 12: Dragosan -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">12</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="frame frame-tall">
+            <div class="frame-inner">
+              <img data-alt="Dragosan interactive audio experience" src="assets/Portfolio/dragosan/screenshot.png" data-parallax/>
+              <div class="frame-caption">
+                <h3 class="cap-title">Caves of Dragosan</h3>
+                <p>Synchronized sound, FX, and narrative</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 12</span>
+          <h3 class="p-title">Dragosan</h3>
+          <p class="p-sub">Interactive Audio Experience</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>This project was born out of a strong desire to create an excellent user experience for Dr. Ahmed Khaled Tawfik's book 'In the Caves of Dragosan'. A true passion project driven by love for the book, it reimagines the story as an immersive audio-visual experience with synchronized sound, visuals, and narrative.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>Built a fully interactive audio-visual experience with GSAP animations, a custom FX engine synchronized to audio timestamps, dynamic visual effects (fire, eyes, blood, whisper, freeze, dim, shake, fall, collapse, door, steps, water, heart, scream, stab, flare, black), and a custom HTML5 audio player with scene-based navigation. Deployed on Vercel.</p>
+            </div>
+          </div>
+          <div class="tags" data-tags style="margin-top: 2rem;">
+            <span class="tag">GSAP</span>
+            <span class="tag">Audio</span>
+            <span class="tag">Interactive</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">FX Engine</span>
+          </div>
+          <a class="p-link" href="https://dragosan.vercel.app/" target="_blank" rel="noopener">Live Site — dragosan.vercel.app</a>
         </div>
       </div>
     </article>
@@ -391,6 +799,7 @@
         <a href="https://linkedin.com/in/ahmadshapan" target="_blank">LinkedIn</a>
         <a href="https://ahmadshapan123123-stack.github.io/CV/" target="_blank">Resume</a>
         <a href="https://wa.me/201021855103" target="_blank">WhatsApp</a>
+        <a href="https://ahmadshapan123123-stack.github.io/content-Portfolio/" target="_blank" rel="noopener">Writer Portfolio</a>
       </div>
     </div>
   </section>
@@ -404,6 +813,11 @@
     <p class="foot-note">&copy; 2026  (EL-KASHIF). All rights reserved.</p>
   </div>
 </footer>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image preview">&times;</button>
+  <img id="lightboxImg" src="" alt="Enlarged portfolio preview" />
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -442,23 +856,67 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* Ambient orbs drift (pointer only, subtle). */
-  var orbA = document.querySelector(".orb-a");
-  var orbB = document.querySelector(".orb-b");
-  function placeOrbs(x, y) {
-    if (orbA) orbA.style.transform = "translate(" + (x - 280) + "px," + (y - 280) + "px)";
-    if (orbB) orbB.style.transform = "translate(" + (x - 190) + "px," + (y - 190) + "px)";
+  /* v3-orb-fix2: mouse-following light (matches original decorative-light design). */
+  // Move the decorative light with mouse across entire page
+  document.addEventListener('mousemove', (e) => {
+      const decorativeLight = document.querySelector('.decorative-light');
+      if (decorativeLight) {
+          const x = (e.clientX / window.innerWidth) * 100;
+          const y = (e.clientY / window.innerHeight) * 100;
+          decorativeLight.style.left = `${x}%`;
+          decorativeLight.style.top = `${y}%`;
+          decorativeLight.style.transform = 'translate(-50%, -50%)';
+      }
+  });
+
+  // Create additional decorative lights for better coverage
+  function createDecorativeLights() {
+      const body = document.body;
+
+      // Main decorative light (existing)
+      const existingLight = document.querySelector('.decorative-light');
+      if (existingLight) {
+          existingLight.style.position = 'fixed';
+          existingLight.style.width = '600px';
+          existingLight.style.height = '600px';
+          existingLight.style.background = 'radial-gradient(circle, rgba(233, 193, 118, 0.15) 0%, rgba(233, 193, 118, 0.05) 30%, transparent 70%)';
+          existingLight.style.blur = '150px';
+      }
+
+      // Create additional lights for better effect
+      for (let i = 0; i < 3; i++) {
+          const light = document.createElement('div');
+          light.className = 'decorative-light-secondary';
+          light.style.cssText = `
+              position: fixed;
+              width: ${300 + i * 100}px;
+              height: ${300 + i * 100}px;
+              background: radial-gradient(circle, rgba(233, 193, 118, ${0.05 - i * 0.01}) 0%, transparent 60%);
+              border-radius: 50%;
+              pointer-events: none;
+              z-index: ${10 - i};
+              transition: all 0.4s ease-out;
+          `;
+          body.appendChild(light);
+      }
+
+      // Move all lights with mouse
+      document.addEventListener('mousemove', (e) => {
+          const x = e.clientX;
+          const y = e.clientY;
+
+          // Move secondary lights with slight delay
+          document.querySelectorAll('.decorative-light-secondary').forEach((light, index) => {
+              setTimeout(() => {
+                  light.style.left = `${x - (150 + index * 50)}px`;
+                  light.style.top = `${y - (150 + index * 50)}px`;
+              }, index * 50);
+          });
+      });
   }
-  placeOrbs(window.innerWidth * 0.8, 120);
-  var orbRaf = null;
-  document.addEventListener("mousemove", function (e) {
-    if (orbRaf) return;
-    orbRaf = requestAnimationFrame(function () {
-      orbRaf = null;
-      var w = window.innerWidth || 1, h = window.innerHeight || 1;
-      placeOrbs((e.clientX / w) * w * 0.9, (e.clientY / h) * h * 0.9);
-    });
-  }, { passive: true });
+
+  // Initialize lights when page loads
+  document.addEventListener('DOMContentLoaded', createDecorativeLights);
 
   /* Motion: GSAP required. Without it (offline / reduced-motion),
      the page stays fully readable — no hidden initial states in CSS. */
@@ -475,12 +933,6 @@
     .from('.hero [data-hero="line"]', { yPercent: 110, duration: 1.1, stagger: 0.12 })
     .from('.hero [data-hero="badge"]', { y: 18, autoAlpha: 0, duration: 0.7 }, "-=0.7")
     .from('.hero [data-hero="lede"]', { y: 26, autoAlpha: 0, duration: 0.8 }, "-=0.55");
-
-  /* Scrubbed hero ambience: orbs drift away as you leave the hero. */
-  gsap.to(".orb-a", {
-    yPercent: 30, ease: "none",
-    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 }
-  });
 
   /* 2. Scroll reveals — varied per section type. */
   document.querySelectorAll("[data-project]").forEach(function (proj) {
@@ -586,6 +1038,66 @@
   });
 
   window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+})();
+</script>
+<script>
+/* v3-fix2: clickable images with lightbox (GSAP fade + scale, accessible) */
+(function () {
+  "use strict";
+  var overlay = document.getElementById("lightbox");
+  var overlayImg = document.getElementById("lightboxImg");
+  var closeBtn = document.getElementById("lightboxClose");
+  if (!overlay || !overlayImg || !closeBtn) return;
+
+  function openLightbox(src, alt) {
+    overlayImg.src = src;
+    overlayImg.alt = alt || "Enlarged portfolio preview";
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (closeBtn.focus) { try { closeBtn.focus({ preventScroll: true }); } catch (e) { closeBtn.focus(); } }
+    if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out" });
+      gsap.fromTo(overlayImg, { scale: 0.92, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: "power3.out" });
+    } else {
+      overlay.style.opacity = "1";
+      overlay.style.visibility = "visible";
+    }
+  }
+
+  function closeLightbox() {
+    var done = function () {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      overlayImg.src = "";
+      document.body.style.overflow = "";
+    };
+    if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.to(overlayImg, { scale: 0.94, autoAlpha: 0, duration: 0.28, ease: "power2.in" });
+      gsap.to(overlay, { autoAlpha: 0, duration: 0.3, ease: "power2.in", onComplete: function () { gsap.set(overlay, { clearProps: "all" }); gsap.set(overlayImg, { clearProps: "all" }); done(); } });
+    } else {
+      done();
+      overlay.style.opacity = "";
+      overlay.style.visibility = "";
+    }
+  }
+
+  document.querySelectorAll(".frame-inner img, .thumb img").forEach(function (img) {
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("role", "button");
+    var label = img.getAttribute("data-alt") || img.getAttribute("alt") || "Portfolio image";
+    img.setAttribute("aria-label", "Enlarge image: " + label);
+    img.addEventListener("click", function () {
+      openLightbox(img.currentSrc || img.src, label);
+    });
+    img.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(img.currentSrc || img.src, label); }
+    });
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeLightbox(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && overlay.classList.contains("open")) closeLightbox(); });
 })();
 </script>
 </body>
