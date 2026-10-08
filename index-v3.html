@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ahmad Shapan | Technical Developer &amp; System Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style-v3.css">
+</head>
+<body>
+<div class="canvas" aria-hidden="true"></div>
+<div class="grid-veil" aria-hidden="true"></div>
+<div class="orb orb-a" aria-hidden="true"></div>
+<div class="orb orb-b" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="site-head" id="siteHead">
+  <div class="head-inner">
+    <a class="brand" href="#" aria-label="EL-KASHIF home">
+      <span class="brand-mark"><img src="assets/KASHif logo-02.png" alt="EL-KASHIF Logo"></span>
+      <span class="brand-word">EL-KASHIF</span>
+    </a>
+    <div class="head-center" aria-hidden="true">
+      <span class="head-rule"></span>
+      <span class="head-rule-diamond"></span>
+      <span class="head-rule"></span>
+    </div>
+    <nav class="head-nav" id="headNav" aria-label="Primary">
+      <a class="nav-link" href="#">Portfolio</a>
+      <a class="nav-link" href="https://ahmadshapan123123-stack.github.io/content-Portfolio/" target="_blank" rel="noopener">Writer Portfolio</a>
+      <a class="nav-link" href="https://ahmadshapan123123-stack.github.io/CV/" target="_blank" rel="noopener">Resume</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn-gold magnetic" href="#" id="headCta">Start Your Project</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="headNav">
+        <span class="material-symbols-outlined" data-icon="menu">menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+</header>
+
+<div class="page">
+<main>
+  <!-- Hero -->
+  <section class="hero" id="overview" aria-label="Overview">
+    <div class="hero-badge" data-hero="badge">
+      <span class="dot" aria-hidden="true"></span>
+      <span>WordPress Engineer &amp; System Architect</span>
+    </div>
+    <h2 class="hero-title" aria-label="TECHNICAL DEVELOPER.">
+      <span class="mask-line"><span class="mask-inner" data-hero="line">TECHNICAL</span></span>
+      <span class="mask-line"><span class="mask-inner accent" data-hero="line">DEVELOPER.</span></span>
+    </h2>
+    <div class="hero-lede" data-hero="lede">
+      <p>Engineering high-performance digital experiences through custom architectural frameworks and bespoke plugin ecosystems. I bridge the gap between editorial vision and robust technical execution.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- Projects -->
+  <section class="projects" id="projects" aria-label="Projects">
+
+    <!-- Category: Custom Code -->
+    <div class="text-center space-y-4 mb-16">
+      <span class="text-primary font-bold text-xs tracking-[0.3em] uppercase">Custom Code</span>
+      <h3 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">Custom Code Projects</h3>
+      <p class="text-on-surface-variant text-lg">Applications built from scratch with React &amp; TypeScript</p>
+    </div>
+
+    <!-- Project 01 -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">01</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="frame frame-tall">
+            <div class="frame-inner">
+              <img data-alt="Apartment planning interface" src="assets/Portfolio/shaqti-plan/1.png" data-parallax/>
+              <div class="frame-caption">
+                <h3 class="cap-title">Interactive Drawing Canvas</h3>
+                <p>Real-time apartment planning with RTL support for Arabic users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 01</span>
+          <h3 class="p-title">Shaqti Plan</h3>
+          <p class="p-sub">Apartment Planning Tool</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>The Arabic digital landscape was missing intuitive apartment planning tools that respected RTL typography and cultural design patterns. Users struggled with Western-centric solutions that felt alien to their workflow and spatial understanding.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>Architected a comprehensive React application with TypeScript that bridges cultural design with modern functionality. Created an interactive canvas system that understands Arabic spatial planning, complete with gesture controls and real-time measurement tools.</p>
+            </div>
+          </div>
+          <div class="stats" data-stats>
+            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">RTL Support</span></div>
+            <div class="stat"><span class="num" data-count="95" data-suffix="%">95%</span><span class="lbl">User Experience</span></div>
+          </div>
+          <div class="tags" data-tags>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Interactive Canvas</span>
+            <span class="tag">RTL Support</span>
+            <span class="tag">Vercel Deploy</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Category: WordPress -->
+    <div class="text-center space-y-4 mb-16">
+      <span class="text-primary font-bold text-xs tracking-[0.3em] uppercase">WordPress</span>
+      <h3 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">WordPress Projects</h3>
+      <p class="text-on-surface-variant text-lg">Custom themes, plugins, and Elementor solutions</p>
+    </div>
+
+    <!-- Project 02 -->
+    <article class="project" data-project>
+      <span class="ghost right" data-ghost aria-hidden="true">02</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="duo">
+            <div class="frame frame-tall">
+              <div class="frame-inner">
+                <img data-alt="Project management dashboard" src="assets/Portfolio/project manger/1.png" data-parallax/>
+                <div class="frame-caption top">
+                  <h3 class="cap-title">Admin Dashboard</h3>
+                  <p>Real-time project tracking</p>
+                </div>
+              </div>
+            </div>
+            <div class="frame frame-tall">
+              <div class="frame-inner">
+                <img data-alt="Team collaboration interface" src="assets/Portfolio/project manger/2.png" data-parallax/>
+                <div class="frame-caption top">
+                  <h3 class="cap-title">Team Portal</h3>
+                  <p>Multi-team access control</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 02</span>
+          <h3 class="p-title">Project Manager</h3>
+          <p class="p-sub">Enterprise Workflow System</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Background</h4>
+              <p>The programming industry was drowning in disconnected project management tools that failed to understand the collaborative nature of modern development teams. Siloed workflows and rigid permission systems created bottlenecks that slowed innovation and team productivity.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Implementation</h4>
+              <p>Crafted a sophisticated WordPress-native ecosystem that reimagines project management for programming companies. Engineered an intelligent RBAC framework with real-time AJAX workflows that adapt to team dynamics and project complexity.</p>
+            </div>
+          </div>
+          <div class="stats" data-stats>
+            <div class="stat"><span class="num" data-count="95" data-suffix="%">95%</span><span class="lbl">Automation</span></div>
+            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">Team Support</span></div>
+          </div>
+          <div class="tags" data-tags>
+            <span class="tag">WordPress Native</span>
+            <span class="tag">RBAC System</span>
+            <span class="tag">AJAX Engine</span>
+            <span class="tag">Workflow Management</span>
+            <span class="tag">Multi-team</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 03 -->
+    <article class="project" data-project>
+      <span class="ghost" data-ghost aria-hidden="true">03</span>
+      <div class="project-grid tall flip">
+        <div class="p-visual" data-visual>
+          <div class="trio">
+            <div class="frame lead">
+              <div class="frame-inner">
+                <img data-alt="Dashboard interface" src="assets/Portfolio/feedback/Screenshot 2026-02-13 142823.png" data-parallax/>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="Data visualization detail" src="assets/Portfolio/feedback/Screenshot 2026-02-13 142711.png" data-parallax/>
+              </div>
+            </div>
+            <div class="frame mini">
+              <div class="frame-inner">
+                <img data-alt="System flow diagram" src="assets/Portfolio/feedback/image (3).png" data-parallax/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 03</span>
+          <h3 class="p-title">Feedback System</h3>
+          <p class="p-sub">Workflow Automation</p>
+          <div class="stack-cards">
+            <div class="card" data-card>
+              <h4>Challenge</h4>
+              <p>Developing a complex RBAC (Role-Based Access Control) and Credits system within a unified administrative environment.</p>
+            </div>
+            <div class="card" data-card>
+              <h4>Solution</h4>
+              <p>Engineered a Native WP App utilizing an AJAX Workflow Engine for real-time status updates and credit deduction logic.</p>
+            </div>
+          </div>
+          <div class="stats" data-stats>
+            <div class="stat"><span class="num" data-count="85" data-suffix="%">85%</span><span class="lbl">Review Reduction</span></div>
+            <div class="stat"><span class="num" data-count="100" data-suffix="%">100%</span><span class="lbl">Automation</span></div>
+          </div>
+          <div class="tags" data-tags>
+            <span class="tag">Native WP Development</span>
+            <span class="tag">AJAX Workflow Engine</span>
+            <span class="tag">RBAC</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider soft narrow" aria-hidden="true"></div>
+
+    <!-- Project 04 -->
+    <article class="project" data-project>
+      <span class="ghost right" data-ghost aria-hidden="true">04</span>
+      <div class="project-grid">
+        <div class="p-visual" data-visual>
+          <div class="duo">
+            <div class="frame side-tall">
+              <div class="frame-inner">
+                <img data-alt="Modern architecture" src="assets/Portfolio/naht/1.png" data-parallax/>
+              </div>
+            </div>
+            <div class="stack">
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="Architectural details" src="assets/Portfolio/naht/2.png" data-parallax/>
+                </div>
+              </div>
+              <div class="frame mini2">
+                <div class="frame-inner">
+                  <img data-alt="Lighting study" src="assets/Portfolio/naht/3.png" data-parallax/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-copy" data-copy>
+          <span class="kicker">Project 04</span>
+          <h3 class="p-title">Naht Al-Osoul</h3>
+          <p class="p-sub">Real Estate Architect</p>
+          <div class="stack-cards">
+            <div class="card lead" data-card>
+              <p>Challenge: Building a bespoke geographic engine for high-end real estate filtering. Solution: Created the <strong>Naht Assets Engine</strong> plugin.</p>
+            </div>
+          </div>
+          <div class="spec" data-stats>
+            <div><p>Tech Core</p><p>Custom Engine Architecture</p></div>
+            <div><p>Intelligence</p><p>Geo-filtering Algorithm</p></div>
+            <div><p>UX</p><p>Reactive Interface</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- Project 05 (feature panel) -->
+    <article class="project" data-project>
+      <div class="panel" data-visual>
+        <span class="ghost faint" data-ghost aria-hidden="true">05</span>
+        <div class="panel-grid">
+          <div class="p-copy" data-copy>
+            <span class="kicker">Project 05</span>
+            <h3 class="p-title">Dawah Platform</h3>
+            <p class="p-sub">Institutional Hub</p>
+            <div class="stack-cards">
+              <div class="card lead" data-card>
+                <p>Challenge: A complex Mini-HR system required within an institutional framework. Solution: Developed the <strong>Dawah Smart Hub</strong> plugin, achieving 100% automation of internal workflows.</p>
+              </div>
+            </div>
+            <div class="tags" data-tags>
+              <span class="tag">Dawah Smart Hub Plugin</span>
+              <span class="tag">Elementor Pro</span>
+              <span class="tag">Automated Tagging</span>
+            </div>
+          </div>
+          <div class="meter" data-card>
+            <div class="meter-top">
+              <span>System Integrity</span>
+              <span class="material-symbols-outlined" data-icon="verified">verified</span>
+            </div>
+            <div class="meter-bar" aria-hidden="true"><div class="meter-fill" data-meter></div></div>
+            <p>Reduced operational overhead by significantly streamlining member onboarding and tracking.</p>
+          </div>
+        </div>
+        <div class="gallery-3" data-tags>
+          <div class="frame">
+            <div class="frame-inner">
+              <img data-alt="Member management interface" src="assets/Portfolio/Dawah-Association/1.png" data-parallax/>
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-inner">
+              <img data-alt="Workflow automation dashboard" src="assets/Portfolio/Dawah-Association/2.png" data-parallax/>
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-inner">
+              <img data-alt="Data analytics view" src="assets/Portfolio/Dawah-Association/3.png" data-parallax/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- Projects 06 & 07 -->
+    <article class="project" data-project>
+      <div class="duo-cards">
+        <div class="mini-card" data-copy>
+          <span class="ghost small" data-ghost aria-hidden="true">05</span>
+          <span class="kicker">Project 06</span>
+          <h3 class="p-title">Bayt El-Hikma</h3>
+          <p class="p-sub">Knowledge Repository</p>
+          <p class="lede">Challenge: Scaling post-architecture CPTs with specialized Dark Mode logic. Solution: Engineered the <strong>Hikma Archive Manager</strong> plugin for specialized knowledge repository management.</p>
+          <div class="thumbs c2" data-visual>
+            <div class="thumb"><img src="assets/Portfolio/bayt-elhikma/1.png" alt="Hikma Archive Interface"/></div>
+            <div class="thumb"><img src="assets/Portfolio/bayt-elhikma/2.png" alt="Dark Mode System"/></div>
+          </div>
+          <div class="spec" data-stats>
+            <div><p>Tech Core</p><p>Advanced CPTs</p></div>
+            <div><p>Intelligence</p><p>Dark Mode Logic</p></div>
+            <div><p>UX</p><p>Custom Widgets</p></div>
+          </div>
+          <div class="tags" data-tags>
+            <span class="tag">Advanced CPTs</span>
+            <span class="tag">Dark Mode Logic</span>
+            <span class="tag">Widgets</span>
+          </div>
+        </div>
+        <div class="mini-card" data-copy>
+          <span class="ghost small right" data-ghost aria-hidden="true">07</span>
+          <span class="kicker">Project 07</span>
+          <h3 class="p-title">Vision Doors</h3>
+          <p class="p-sub">Product Configurator</p>
+          <p class="lede">Challenge: Complex dual-taxonomy logic for product configuration. Solution: Developed <strong>Vision Product Configurator</strong>, a high-conversion tool integrating reactive UI components.</p>
+          <div class="thumbs c3" data-visual>
+            <div class="thumb"><img src="assets/Portfolio/Vision/1.png" alt="Product Interface"/></div>
+            <div class="thumb"><img src="assets/Portfolio/Vision/2.png" alt="Configuration Panel"/></div>
+            <div class="thumb"><img src="assets/Portfolio/Vision/3.png" alt="Product Preview"/></div>
+          </div>
+          <div class="spec" data-stats>
+            <div><p>Tech Core</p><p>Logic Matrix</p></div>
+            <div><p>Intelligence</p><p>Dual-Taxonomy</p></div>
+            <div><p>UX</p><p>Reactive UI</p></div>
+          </div>
+          <div class="tags" data-tags>
+            <span class="tag">Logic Matrix</span>
+            <span class="tag">Dual-Taxonomy</span>
+            <span class="tag">Reactive UI</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-label="Contact" data-project>
+    <div class="contact-glyph" aria-hidden="true">
+      <span class="material-symbols-outlined" data-icon="mail">mail</span>
+    </div>
+    <div class="contact-inner" data-copy>
+      <h2>Let's Connect.</h2>
+      <a class="contact-mail" href="mailto:ahmadshapan123123@gmail.com">ahmadshapan123123@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/ahmadshapan" target="_blank">LinkedIn</a>
+        <a href="https://ahmadshapan123123-stack.github.io/CV/" target="_blank">Resume</a>
+        <a href="https://wa.me/201021855103" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-brand">EL-KASHIF</div>
+    <div></div>
+    <p class="foot-note">&copy; 2026  (EL-KASHIF). All rights reserved.</p>
+  </div>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* Mobile nav: reuses the same nav node (no duplicated copy). */
+  var menuBtn = document.getElementById("menuBtn");
+  var headNav = document.getElementById("headNav");
+  if (menuBtn && headNav) {
+    menuBtn.addEventListener("click", function () {
+      var open = headNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    headNav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        headNav.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  /* Header state + progress (no GSAP dependency). */
+  var head = document.getElementById("siteHead");
+  var progress = document.getElementById("scrollProgress");
+  function onScroll() {
+    var y = window.scrollY || 0;
+    if (head) head.classList.toggle("is-scrolled", y > 24);
+    if (progress) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* Ambient orbs drift (pointer only, subtle). */
+  var orbA = document.querySelector(".orb-a");
+  var orbB = document.querySelector(".orb-b");
+  function placeOrbs(x, y) {
+    if (orbA) orbA.style.transform = "translate(" + (x - 280) + "px," + (y - 280) + "px)";
+    if (orbB) orbB.style.transform = "translate(" + (x - 190) + "px," + (y - 190) + "px)";
+  }
+  placeOrbs(window.innerWidth * 0.8, 120);
+  var orbRaf = null;
+  document.addEventListener("mousemove", function (e) {
+    if (orbRaf) return;
+    orbRaf = requestAnimationFrame(function () {
+      orbRaf = null;
+      var w = window.innerWidth || 1, h = window.innerHeight || 1;
+      placeOrbs((e.clientX / w) * w * 0.9, (e.clientY / h) * h * 0.9);
+    });
+  }, { passive: true });
+
+  /* Motion: GSAP required. Without it (offline / reduced-motion),
+     the page stays fully readable — no hidden initial states in CSS. */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var EASE = "power3.out";
+
+  /* 1. Hero orchestrated timeline: masked lines, then badge/meta stagger.
+     (Badge animates in after the headline for a deliberate reveal order.) */
+  var heroTl = gsap.timeline({ defaults: { ease: EASE } });
+  heroTl
+    .from('.hero [data-hero="line"]', { yPercent: 110, duration: 1.1, stagger: 0.12 })
+    .from('.hero [data-hero="badge"]', { y: 18, autoAlpha: 0, duration: 0.7 }, "-=0.7")
+    .from('.hero [data-hero="lede"]', { y: 26, autoAlpha: 0, duration: 0.8 }, "-=0.55");
+
+  /* Scrubbed hero ambience: orbs drift away as you leave the hero. */
+  gsap.to(".orb-a", {
+    yPercent: 30, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 }
+  });
+
+  /* 2. Scroll reveals — varied per section type. */
+  document.querySelectorAll("[data-project]").forEach(function (proj) {
+    var copy = proj.querySelector("[data-copy]");
+    var visual = proj.querySelector("[data-visual]");
+    var cards = proj.querySelectorAll("[data-card]");
+    var tags = proj.querySelectorAll("[data-tags] .tag, [data-tags] .frame, [data-tags] .thumb");
+    var stats = proj.querySelectorAll("[data-stats] > *, [data-stats] .stat");
+
+    if (copy) {
+      gsap.from(copy.querySelectorAll(".kicker, .p-title, .p-sub, .lede"), {
+        x: -36, autoAlpha: 0, duration: 0.9, ease: EASE, stagger: 0.1,
+        scrollTrigger: { trigger: copy, start: "top 82%" }
+      });
+    }
+    if (cards.length) {
+      gsap.from(cards, {
+        y: 44, autoAlpha: 0, duration: 0.9, ease: EASE, stagger: 0.14,
+        scrollTrigger: { trigger: cards[0], start: "top 86%" }
+      });
+    }
+    if (stats.length) {
+      gsap.from(stats, {
+        scale: 0.92, autoAlpha: 0, duration: 0.7, ease: EASE, stagger: 0.1,
+        scrollTrigger: { trigger: stats[0], start: "top 88%" }
+      });
+    }
+    if (tags.length) {
+      gsap.from(tags, {
+        y: 22, autoAlpha: 0, duration: 0.6, ease: EASE, stagger: 0.06,
+        scrollTrigger: { trigger: tags[0], start: "top 90%" }
+      });
+    }
+
+    /* 3. Project visual: clip-path wipe + inner parallax; ghost parallax. */
+    if (visual) {
+      var inner = visual.querySelector(".frame-inner");
+      if (inner) {
+        gsap.fromTo(inner,
+          { clipPath: "inset(10% 6% 10% 6% round 24px)" },
+          {
+            clipPath: "inset(0% 0% 0% 0% round 24px)",
+            ease: "none",
+            scrollTrigger: { trigger: visual, start: "top 88%", end: "top 45%", scrub: 1 }
+          });
+      }
+      visual.querySelectorAll("[data-parallax]").forEach(function (img) {
+        gsap.fromTo(img, { yPercent: -6 }, {
+          yPercent: 6, ease: "none",
+          scrollTrigger: { trigger: visual, start: "top bottom", end: "bottom top", scrub: 1 }
+        });
+      });
+    }
+    var ghost = proj.querySelector("[data-ghost]");
+    if (ghost) {
+      gsap.fromTo(ghost, { yPercent: 24 }, {
+        yPercent: -24, ease: "none",
+        scrollTrigger: { trigger: proj, start: "top bottom", end: "bottom top", scrub: 1 }
+      });
+    }
+  });
+
+  /* Contact: meter fills on entry; headline rises. */
+  var meter = document.querySelector("[data-meter]");
+  if (meter) {
+    gsap.from(meter, {
+      scaleX: 0, transformOrigin: "left center", duration: 1.4, ease: "power2.inOut",
+      scrollTrigger: { trigger: meter, start: "top 88%" }
+    });
+  }
+
+  /* 4. Magnetic primary CTAs. */
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.querySelectorAll(".magnetic").forEach(function (el) {
+      var strength = 18;
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2);
+        var dy = e.clientY - (r.top + r.height / 2);
+        gsap.to(el, { x: (dx / r.width) * strength, y: (dy / r.height) * strength, duration: 0.4, ease: "power2.out" });
+      });
+      el.addEventListener("mouseleave", function () {
+        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: "power3.out" });
+      });
+    });
+  }
+
+  /* 5. Stat counters. */
+  document.querySelectorAll("[data-count]").forEach(function (el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var suffix = el.getAttribute("data-suffix") || "";
+    var obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: "top 90%", once: true,
+      onEnter: function () {
+        gsap.to(obj, {
+          v: target, duration: 1.6, ease: "power2.out",
+          onUpdate: function () { el.textContent = Math.round(obj.v) + suffix; },
+          onComplete: function () { el.textContent = Math.round(target) + suffix; }
+        });
+      }
+    });
+  });
+
+  window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
