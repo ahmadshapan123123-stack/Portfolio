@@ -168,6 +168,32 @@
       top: 50%;
       transform: translate(-50%, -50%);
   }
+  /* Header responsiveness fixes */
+  .btn-gold {
+      white-space: nowrap !important;
+      min-width: fit-content !important;
+  }
+  .brand-word {
+      white-space: nowrap !important;
+  }
+  @media (max-width: 768px) {
+      .head-inner {
+          flex-wrap: wrap !important;
+          gap: 0.5rem !important;
+      }
+      .head-center {
+          display: none !important;
+      }
+      .head-nav {
+          order: 3 !important;
+          width: 100% !important;
+          justify-content: center !important;
+      }
+      .btn-gold {
+          font-size: 0.75rem !important;
+          padding: 0.5rem 1rem !important;
+      }
+  }
 </style>
 </head>
 <body>
