@@ -44,7 +44,9 @@ body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(233, 193, 118, 0.15);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .glass-card:hover {
